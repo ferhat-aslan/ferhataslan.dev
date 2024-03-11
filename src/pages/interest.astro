@@ -1,6 +1,7 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
-
+import { Image } from "astro:assets";
+import ManagementTeam from "@/assets/management-team.png";
 const meta = {
 	description: "I'm a starter theme for Astro.build",
 	title: "About",
@@ -22,12 +23,13 @@ const meta = {
 				<div class="flex flex-col justify-center gap-8">
 					<div class="flex flex-col gap-2">
 						<div class="flex flex-row items-center md:flex-col md:items-start md:gap-2">
-							<img
+							<Image
 								class="-translate-x-1"
 								loading="lazy"
-								src="/src/assets/management-team.png"
+								src={ManagementTeam}
 								width="40"
 								height="40"
+								alt={"Magament team"}
 							/>
 							<h1 class="text-2xl">I like EU and EU Flag</h1>
 						</div>
@@ -51,12 +53,13 @@ const meta = {
 				<div class="flex flex-col justify-center gap-8">
 					<div class="flex flex-col gap-2">
 						<div class="flex flex-row items-center md:flex-col md:items-start md:gap-2">
-							<img
+							<Image
 								class="-translate-x-1"
 								loading="lazy"
 								src="/src/assets/management-team.png"
 								width="40"
 								height="40"
+								alt={"mag"}
 							/>
 							<h1 class="text-2xl">I like EU and EU Flag</h1>
 						</div>

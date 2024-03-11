@@ -3,7 +3,8 @@ import SocialList from "@/components/SocialList.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
 import PageLayout from "@/layouts/Base.astro";
 import { getAllPosts, sortMDByDate } from "@/utils";
-
+import { Image } from "astro:assets";
+import GermanyIcon from "@/assets/made-in-germany-icon.png";
 const MAX_POSTS = 10;
 const allPosts = await getAllPosts();
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
@@ -83,9 +84,12 @@ const feslanTech: { desc: string; href: string; title: string }[] = [
 		<h1 class="title mb-6">an Engineer, Cyclist, Curious...</h1>
 		<p class="mb-4">
 			Hey 🖐, I am Ferhat and I am a <span class="underline">Software Engineer</span> who is focused
-			on Web and IoT. Based in Germany <img
+			on Web and IoT. Based in Germany <Image
+				fetchpriority="high"
+				loading="eager"
+				alt={"Germany icon"}
 				class="inline w-5"
-				src="/src/assets/made-in-germany-icon.png"
+				src={GermanyIcon}
 			/> . I studied Electric/Electronic Engineering. I have solid experience/knowledge about Full Stack
 			Development, Angular, Typescript, Javascript,Java, .Net, NodeJS HTML, CSS. I am technology enthusiast,
 			loves to learn new things.

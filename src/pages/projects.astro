@@ -1,6 +1,11 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
-
+import { Image } from "astro:assets";
+import GrapQLReasong from "@/assets/graphql-reasons.png";
+import Solar from "@/assets/solar.png";
+import DockerJavaSpring from "@/assets/docker-java-spring.jpg";
+import DWGCad from "@/assets/DWG-CAD-Drawing.jpg";
+import EComm from "@/assets/e-commerce.png";
 const meta = {
 	description: "Ferhat Aslan Projects",
 	title: "Projects",
@@ -17,11 +22,11 @@ const meta = {
 					href=""
 					class="relative flex max-h-96 max-w-80 flex-col items-start justify-start lg:min-w-80"
 				>
-					<img
+					<Image
 						loading="lazy"
 						decoding="async"
-						src="/src/assets/graphql-reasons.png"
-						alt=""
+						src={GrapQLReasong}
+						alt={"grapql"}
 						class="min-h-full min-w-full rounded-b-md rounded-t-md object-cover brightness-75"
 					/>
 					<div
@@ -41,10 +46,10 @@ const meta = {
 					href=""
 					class="relative flex max-h-96 max-w-80 flex-col items-start justify-start lg:min-w-80"
 				>
-					<img
+					<Image
 						loading="lazy"
 						decoding="async"
-						src="/src/assets/docker-java-spring.jpg"
+						src={DockerJavaSpring}
 						alt=""
 						class="min-h-full min-w-full rounded-b-md rounded-t-md object-cover brightness-75"
 					/>
@@ -65,10 +70,10 @@ const meta = {
 					href="https://github.com/ferhat-aslan/ng-zr"
 					class="relative flex max-h-96 max-w-80 flex-col items-start justify-start lg:min-w-80"
 				>
-					<img
+					<Image
 						loading="lazy"
 						decoding="async"
-						src="/src/assets/DWG-CAD-Drawing.jpg"
+						src={DWGCad}
 						alt=""
 						class="min-h-full min-w-full rounded-b-md rounded-t-md object-cover brightness-75"
 					/>
@@ -89,10 +94,10 @@ const meta = {
 					href="https://github.com/ferhat-aslan/Angular-SolarPanel-SytemDesign"
 					class="relative flex max-h-96 max-w-80 flex-col items-start justify-start lg:min-w-80"
 				>
-					<img
+					<Image
 						loading="lazy"
 						decoding="async"
-						src="/src/assets/solar.png"
+						src={Solar}
 						alt=""
 						class="min-h-full min-w-full rounded-b-md rounded-t-md object-cover brightness-75"
 					/>
@@ -113,10 +118,10 @@ const meta = {
 					href="https://github.com/ferhat-aslan/Angular-E-Commerce-App"
 					class="relative flex max-h-96 max-w-80 flex-col items-start justify-start lg:min-w-80"
 				>
-					<img
+					<Image
 						loading="lazy"
 						decoding="async"
-						src="/src/assets/e-commerce.png"
+						src={EComm}
 						alt=""
 						class="min-h-full min-w-full rounded-b-md rounded-t-md object-cover brightness-75"
 					/>

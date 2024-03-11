@@ -5,7 +5,7 @@ import Search from "../Search.astro";
 import ThemeToggle from "../ThemeToggle.astro";
 
 import { Image } from "astro:assets";
-import myImage from "@/assets/logo.png";
+import Logo from "@/assets/logo.png";
 
 const url = new URL(Astro.request.url);
 ---
@@ -18,7 +18,7 @@ const url = new URL(Astro.request.url);
 			href="/"
 		>
 			<Image
-				src={myImage}
+				src={Logo}
 				alt="A description of my image."
 				class="-top-2 mb-2 h-16 w-16 grayscale hover:grayscale-0 sm:absolute sm:start-[-5rem] sm:mb-0"
 			/>
