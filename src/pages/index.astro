@@ -1,0 +1,177 @@
+---
+import SocialList from "@/components/SocialList.astro";
+import PostPreview from "@/components/blog/PostPreview.astro";
+import PageLayout from "@/layouts/Base.astro";
+import { getAllPosts, sortMDByDate } from "@/utils";
+
+const MAX_POSTS = 10;
+const allPosts = await getAllPosts();
+const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+
+const feslanTech: { desc: string; href: string; title: string }[] = [
+	{
+		desc: "Build Large Scale Enterprise Applications",
+		href: "https://astro.build",
+		title: "Angular",
+	},
+
+	{
+		desc: "Build fast websites, faster.",
+		href: "https://astro.build",
+		title: "Astro",
+	},
+	{
+		desc: "Build fast websites, faster.",
+		href: "https://astro.build",
+		title: "WordPress",
+	},
+	{
+		desc: "Build fast websites, faster.",
+		href: "https://astro.build",
+		title: "WooCommerce",
+	},
+	{
+		desc: "Build fast websites, faster.",
+		href: "https://astro.build",
+		title: "Shopify",
+	},
+	{
+		desc: "Build fast websites, faster.",
+		href: "https://astro.build",
+		title: "Astro",
+	},
+	{
+		desc: "Rapidly build modern websites without ever leaving your HTML.",
+		href: "https://tailwindcss.com",
+		title: "Tailwind CSS",
+	},
+	{
+		desc: "Simple and easy-to-use markup language.",
+		href: "https://www.markdownguide.org/",
+		title: "Markdown",
+	},
+	{
+		desc: "Markdown for the component era.",
+		href: "https://mdxjs.com/",
+		title: "MDX",
+	},
+	{
+		desc: "Generating png Open Graph images for blog posts.",
+		href: "https://github.com/vercel/satori",
+		title: "Satori",
+	},
+	{
+		desc: "A fully static search library.",
+		href: "https://pagefind.app/",
+		title: "Pagefind",
+	},
+	{
+		desc: "An easy to use Icon component for Astro.",
+		href: "https://github.com/natemoo-re/astro-icon#readme",
+		title: "Astro Icon",
+	},
+	{
+		desc: "Highly customisable source code & syntax highlighter",
+		href: "https://expressive-code.com/",
+		title: "Expressive Code",
+	},
+];
+---
+
+<PageLayout meta={{ title: "Home" }}>
+	<section>
+		<h1 class="title mb-6">an Engineer, Cyclist, Curious...</h1>
+		<p class="mb-4">
+			Hey 🖐, I am Ferhat and I am a <span class="underline">Software Engineer</span> who is focused
+			on Web and IoT. Based in Germany <img
+				class="inline w-5"
+				src="/src/assets/made-in-germany-icon.png"
+			/> . I studied Electric/Electronic Engineering. I have solid experience/knowledge about Full Stack
+			Development, Angular, Typescript, Javascript,Java, .Net, NodeJS HTML, CSS. I am technology enthusiast,
+			loves to learn new things.
+		</p>
+		<span
+			class="inline-block bg-gradient-to-r from-blue-600 to-indigo-400 px-3 py-1 text-white underline"
+			>Open to Work!</span
+		>
+		<SocialList />
+	</section>
+	<section aria-label="Blog post list" class="mt-16">
+		<h2 class="title mb-4 text-xl">Posts</h2>
+		<ul class="space-y-4">
+			{
+				allPostsByDate.map((p) => (
+					<li class="flex flex-col gap-x-2 sm:flex-row">
+						<PostPreview post={p} />
+					</li>
+				))
+			}
+		</ul>
+	</section>
+	<section class="mt-16">
+		<h2 class="title mb-4 text-xl">Experiences</h2>
+		<ol class="list-inside list-decimal">
+			<li>
+				<strong>Professional Development | Career Break</strong>: <br />
+				<ul class="list-inside list-disc">
+					<li>Learning Deutsch</li>
+					<li>Developing Open Source Projects</li>
+				</ul>
+				● ● ● ● ● ●
+				<br />
+			</li>
+			<li>
+				<strong>Software Developer @Ollang Inc.</strong>: <br /> As a software developer, Mostly I worked
+				on the Web, and sometimes I contributed back-end side. The team I worked for was 5 people. I
+				have contributed/created 5 Application directly. We developed AI Dubbing localization tool and
+				subtitle tool. Netflix, W4TCH, and some Big Turkish TV channels were our customers who used our
+				tools. I developed a Subtitle creator tool. (I think this tool is better than YouTube’s subtitle
+				tool). I contributed AI Dubbing tool. This tool generates Text-to-speech and implements video.Also
+				We followed Clean Code Rules, and used some linter(ESLint,Prettier,Husky) for good code quality.
+				We followed agile scrum methodologies.I contributed/ created 5 applications directly.
+				<ul class="list-inside list-disc">
+					<li>Reviewed colleague’s codes/ pull requests (Git VSC).</li>
+					<li>had pair programming with my teammates.</li>
+					<li>Dev Environment: VS Code, macOS, Linux Debian, Git VSC,</li>
+					<li>Project Management: Atlassian Jira</li>
+					<li>
+						On Front-end side: I used Angular(10…15), TailwindCSS,SCSS, Typescript, ESLint,
+						WordPress, Angular Material, RxJS, ApexChart, Reactive Forms Module, HttpClient Module
+					</li>
+					<li>
+						on Back-end side: NestJS, Loopback, Node.js, Docker, MongoDB, Redis, RabbitMQ,
+						JavaScript, AWS S3,
+					</li>
+				</ul>
+				● ● ● ● ● ●
+				<br />
+			</li>
+			<li>
+				<strong>Software Developer Traineeship @Patika.dev</strong>: <br /> Created a Ecommerce website
+				and Admin Dashboard (Backend And Frontend). Client can add new products ,edit or delete products
+				and manages orders. Customers can order products and manager adresses and payment methods. Technologies:
+				Angular, GIT, HTML/CSS, Bootstrap, Nodejs, ExpressJs, Heroku, GITHUB Actions
+			</li>
+		</ol>
+	</section>
+	<!-- <section class="mt-16">
+		<h2 class="title mb-4 text-xl">Technologies</h2>
+		<dl class="space-y-4">
+			{
+				feslanTech.map(({ desc, href, title }) => (
+					<div class="flex flex-col gap-2 md:flex-row">
+						<dt>
+							<span class="flex">
+								<a class="x-link" href={href} rel="noopener noreferrer" target="_blank">
+									{title}
+								</a>
+								:
+							</span>
+						</dt>
+						<dd>{desc}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</section> -->
+</PageLayout>
