@@ -7,7 +7,7 @@ export const siteConfig: SiteConfig = {
 	// Meta property used to construct the meta title property, found in src/components/BaseHead.astro L:11
 	title: "Ferhat Aslan | Software Engineer",
 	// Meta property used as the default description meta property
-	description: "An Software Engineer who is live in Germany, Angular, React, PHP, Wordpress, NodeJS, Typescript, SEO, Framer, HostingiShopiy,Woocommerce",
+	description: "An Software Engineer who is live in Germany, and focused Angular, React, PHP, Wordpress, NodeJS, Typescript, SEO, Framer, Hosting, Shopify,Woocommerce",
 	// HTML lang property, found in src/layouts/Base.astro L:18
 	lang: "en-GB",
 	// Meta property, found in src/components/BaseHead.astro L:42
