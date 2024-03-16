@@ -101,4 +101,4 @@ aslanferhat16@gmail.com
 
 https://www.linkedin.com/in/aslanferhat/
 
-https://feslan.github.io
+https://ferhataslan.dev
