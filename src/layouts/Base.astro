@@ -45,12 +45,12 @@ const {
 				style="display:none;visibility:hidden"></iframe></noscript
 		>
 		<!-- End Google Tag Manager (noscript) -->
-		<div
+		<!-- <div
 			id="movingCircle"
 			class="z-100 pointer-events-none fixed h-44 w-44 rounded-full bg-blue-300 blur-3xl"
 			style=" left: 850px; top: 454px;"
 		>
-		</div>
+		</div> -->
 
 		<ThemeProvider />
 		<SkipLink />
@@ -59,7 +59,7 @@ const {
 			<slot />
 		</main>
 		<Footer />
-		<script>
+		<!-- <script>
 			document.addEventListener("DOMContentLoaded", () => {
 				const movingCircle = document.getElementById("movingCircle");
 
@@ -91,6 +91,6 @@ const {
 					movingCircle.style.top = circleY + "px";
 				});
 			});
-		</script>
+		</script> -->
 	</body>
 </html>
