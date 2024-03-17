@@ -1,8 +1,8 @@
 ---
 title: "The Most Popular Linux Bash Commands"
 description: "Linux Bash commands are hugely useful things. You can use some of these common commands in MacOS/Windows. We will see  the most common commands."
-publishDate: "04 July 2023"
-updatedDate: "14 August 2023"
+publishDate: "Mar, 14 2024"
+
 coverImage:
   src: "/src/assets/bash.png"
   alt: "Linux/Gnu Bash"
