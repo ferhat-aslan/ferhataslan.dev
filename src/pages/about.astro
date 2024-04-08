@@ -1,6 +1,7 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
-
+import { Image } from "astro:assets";
+import WhileSleeping from "@/assets/while-sleeping.png";
 const meta = {
 	description: "I'm a starter theme for Astro.build",
 	title: "About",
@@ -465,62 +466,63 @@ const meta = {
 		<a href="/src/assets/resume.pdf" class="x-link">PDF Download</a>
 		<h2 class="mt-8 text-lg font-semibold">Goals</h2>
 		I want to contribute projects. I want to make difference.
+		<Image src={WhileSleeping} alt={""} class={" w-80 h-auto"}>
+			<p class="hidden">
+				Seeking opportunities with teams that: Have a clear product vision and a sense of balance
+				amongst design and engineering disciplines. Collaborate daily and run retrospectives
+				regularly. Utilize continuous integration and/or continuous delivery, pair programming and
+				test-driven methodologies. Considering opportunities in San Francisco or remote.
+			</p>
 
-		<p class="hidden">
-			Seeking opportunities with teams that: Have a clear product vision and a sense of balance
-			amongst design and engineering disciplines. Collaborate daily and run retrospectives
-			regularly. Utilize continuous integration and/or continuous delivery, pair programming and
-			test-driven methodologies. Considering opportunities in San Francisco or remote.
-		</p>
+			<h2 class="mt-8 text-lg font-semibold">Skills</h2>
 
-		<h2 class="mt-8 text-lg font-semibold">Skills</h2>
+			<ul class="list-inside list-disc">
+				<li>Web Development</li>
+				<li>NodeJS</li>
+				<li>Typescript</li>
+				<li>Python</li>
+				<li>Java - Java Spring</li>
+				<li>Git VSC</li>
+				<li>Test-Driven Development</li>
+				<li>Backend Development</li>
+				<li>NoSQL/SQL Databases</li>
+				<li>Linux Bash Scripting</li>
+			</ul>
+			<h2 class="mt-8 text-lg font-semibold">Certificates</h2>
 
-		<ul class="list-inside list-disc">
-			<li>Web Development</li>
-			<li>NodeJS</li>
-			<li>Typescript</li>
-			<li>Python</li>
-			<li>Java - Java Spring</li>
-			<li>Git VSC</li>
-			<li>Test-Driven Development</li>
-			<li>Backend Development</li>
-			<li>NoSQL/SQL Databases</li>
-			<li>Linux Bash Scripting</li>
-		</ul>
-		<h2 class="mt-8 text-lg font-semibold">Certificates</h2>
+			<ul class="list-inside list-disc">
+				<li>Linux System Engineer: Bash Shell Scripting for Automation | Linux | Bash</li>
+				<li>
+					Building Modern Projects with React | Linkedin | React | Redux | HTML | CSS | TailwindCSS
+				</li>
+				<li>Full Stack | The Meta | React | Django | Docker | Python</li>
+				<li>
+					C Programming with Linux Specialization | Dartmouth College Introduction to Cypress | Test
+				</li>
+				<li>Automation University IELTS Academic English B2 | IDP</li>
+			</ul>
 
-		<ul class="list-inside list-disc">
-			<li>Linux System Engineer: Bash Shell Scripting for Automation | Linux | Bash</li>
-			<li>
-				Building Modern Projects with React | Linkedin | React | Redux | HTML | CSS | TailwindCSS
-			</li>
-			<li>Full Stack | The Meta | React | Django | Docker | Python</li>
-			<li>
-				C Programming with Linux Specialization | Dartmouth College Introduction to Cypress | Test
-			</li>
-			<li>Automation University IELTS Academic English B2 | IDP</li>
-		</ul>
+			<h2 class="mt-8 text-lg font-semibold">Projects</h2>
+			<a class="x-link mt-4" href="/projects">Go to Projects</a>
 
-		<h2 class="mt-8 text-lg font-semibold">Projects</h2>
-		<a class="x-link mt-4" href="/projects">Go to Projects</a>
-
-		<ul class="hidden list-inside list-disc">
-			<li>I'm ultra fast as I'm a static site</li>
-			<li>I'm fully responsive</li>
-			<li>I come with a light and dark mode</li>
-			<li>I'm easy to customise and add additional content</li>
-			<li>I have Tailwind CSS styling</li>
-			<li>Shiki code syntax highlighting</li>
-			<li>Satori for auto generating OG images for blog posts</li>
-		</ul>
-		<p class="hidden">
-			Clone or fork my <a
-				aria-label="github repository"
-				class="x-link inline-block"
-				href="https://github.com/chrismwilliams/astro-x"
-				rel="noopener noreferrer"
-				target="_blank">repo</a
-			> if you like me!
-		</p>
+			<ul class="hidden list-inside list-disc">
+				<li>I'm ultra fast as I'm a static site</li>
+				<li>I'm fully responsive</li>
+				<li>I come with a light and dark mode</li>
+				<li>I'm easy to customise and add additional content</li>
+				<li>I have Tailwind CSS styling</li>
+				<li>Shiki code syntax highlighting</li>
+				<li>Satori for auto generating OG images for blog posts</li>
+			</ul>
+			<p class="hidden">
+				Clone or fork my <a
+					aria-label="github repository"
+					class="x-link inline-block"
+					href="https://github.com/chrismwilliams/astro-x"
+					rel="noopener noreferrer"
+					target="_blank">repo</a
+				> if you like me!
+			</p>
+		</Image>
 	</div>
 </PageLayout>

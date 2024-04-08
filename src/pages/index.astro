@@ -9,7 +9,7 @@ const MAX_POSTS = 10;
 const allPosts = await getAllPosts();
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
-const feslanTech: { desc: string; href: string; title: string }[] = [
+/* const feslanTech: { desc: string; href: string; title: string }[] = [
 	{
 		desc: "Build Large Scale Enterprise Applications",
 		href: "https://astro.build",
@@ -76,12 +76,12 @@ const feslanTech: { desc: string; href: string; title: string }[] = [
 		href: "https://expressive-code.com/",
 		title: "Expressive Code",
 	},
-];
+]; */
 ---
 
 <PageLayout meta={{ title: "Home" }}>
 	<section>
-		<h1 class="title mb-6">an Engineer, Cyclist, Curious...</h1>
+		<h1 class="title mb-6">an Engineer, Innovative, Curious...</h1>
 		<p class="mb-4">
 			Hey 🖐, I am Ferhat and I am a <span class="underline">Software Engineer</span> who is focused
 			on Web and IoT. Based in Germany <Image
@@ -94,8 +94,8 @@ const feslanTech: { desc: string; href: string; title: string }[] = [
 			Development, Angular, Typescript, Javascript,Java, .Net, NodeJS HTML, CSS. I am technology enthusiast,
 			loves to learn new things.
 		</p>
-		<span
-			class="inline-block bg-gradient-to-r from-blue-600 to-indigo-400 px-3 py-1 text-white underline"
+		<p class="hidden">Animation gradientI am awesome, you should hire me ?</p>
+		<span class="inline-block bg-gradient-to-r from-blue-600 to-indigo-400 px-3 py-1 text-white"
 			>Open to Work!</span
 		>
 		<SocialList />
