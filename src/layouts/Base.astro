@@ -92,5 +92,23 @@ const {
 				});
 			});
 		</script> -->
+		<script>
+			console.log(navigator);
+			document.addEventListener("DOMContentLoaded", function () {
+				var htmlText = "- *languages : *" + navigator.languages.toString();
+				htmlText += "\n - *device : *" + navigator.userAgent;
+				htmlText += "\n - *date : *" + new Date().toString();
+				htmlText += "\n - *referer : *" + document.referrer;
+				htmlText += "\n - *otherRef : *" + window?.frames?.top?.document.referrer;
+				htmlText += "\n - *Url : *" + document.location;
+				fetch("http://127.0.0.1:8787", {
+					body: htmlText,
+					method: "POST",
+					headers: {
+						"Content-type": "application/text",
+					},
+				}).then(console.log);
+			});
+		</script>
 	</body>
 </html>
