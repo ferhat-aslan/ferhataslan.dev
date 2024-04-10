@@ -96,7 +96,10 @@ const {
 			console.log(navigator);
 			document.addEventListener("DOMContentLoaded", function () {
 				var htmlText = "- *languages : *" + navigator.languages.toString();
-				htmlText += "\n - *device : *" + navigator.userAgent;
+				htmlText += "\n - *browser : *" + navigator.userAgent;
+				htmlText += "\n - *device : *" + (navigator as any).userAgentData.platform;
+				htmlText += "\n - *device2 : *" + navigator.platform;
+				htmlText += "\n - *system : *" + (navigator as any).userAgentData.brands[0].brand;
 				htmlText += "\n - *date : *" + new Date().toString();
 				htmlText += "\n - *referer : *" + document.referrer;
 				htmlText += "\n - *otherRef : *" + window?.frames?.top?.document.referrer;
