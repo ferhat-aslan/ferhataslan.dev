@@ -1,6 +1,10 @@
 {
 	"extends": "astro/tsconfigs/strictest",
 	"compilerOptions": {
+		"noImplicitAny": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "react",
+		"checkJs": false,
 		"baseUrl": ".",
 		"lib": ["es2022", "dom", "dom.iterable"],
 		"paths": {

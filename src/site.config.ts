@@ -51,7 +51,7 @@ export const menuLinks: Array<{ title: string; path: string }> = [
 // https://expressive-code.com/reference/configuration/
 export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 	// One dark, one light theme => https://expressive-code.com/guides/themes/#available-themes
-	themes: ["dracula", "github-light"],
+	themes: ["github-light", "dracula"],
 	themeCssSelector(theme, { styleVariants }) {
 		// If one dark and one light theme are available
 		// generate theme CSS selectors compatible with x-theme dark mode switch
@@ -61,7 +61,8 @@ export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 			if (theme === baseTheme || theme === altTheme) return `[data-theme='${theme.type}']`;
 		}
 		// return default selector
-		return `[data-theme="${theme.name}"]`;
+		console.log("theme", theme);
+		return `[data-theme="light"]`;
 	},
 	useThemedScrollbars: false,
 	styleOverrides: {
