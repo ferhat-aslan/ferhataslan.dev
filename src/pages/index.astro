@@ -13,10 +13,12 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
 <PageLayout meta={{title: "Home"}}>
-	<h1 class="title mb-6" data-scramble="an Engineer, Innovative, Curious..." id="scramble"></h1>
+	<h1 class="title mb-6" data-scramble="an Engineer, Innovative, Curious...">
+		an Engineer, Innovative, Curious...
+	</h1>
 	<p class="mb-4">
-		Hey 🖐, I am Ferhat and I am a <span class="underline">Software Engineer</span> who is focused on
-		Web and IoT. Based in Germany <Image
+		Hey 🖐, I am Ferhat and I am a <span class="underline">Product Minded Software Engineer</span> who
+		is focused on Web and IoT. Based in Germany <Image
 			fetchpriority="high"
 			loading="eager"
 			alt={"Germany icon"}
@@ -26,70 +28,96 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 		Development, Angular, Typescript, Javascript,Java, .Net, NodeJS HTML, CSS. I am technology enthusiast,
 		loves to learn new things.
 	</p>
-	<p class="hidden">Animation gradientI am awesome, you should hire me ?</p>
+	<p class="hidden">Animation gradient I am awesome, you should hire me ?</p>
 	<span class="inline-block bg-gradient-to-r from-blue-600 to-indigo-400 px-3 py-1 text-white"
 		>Open to Work!</span
 	>
 	<SocialList />
+
+	<section aria-label="Blog post list" class="mt-16">
+		<h2 class="title mb-4 text-xl">Posts</h2>
+		<ul class="space-y-4">
+			{
+				allPostsByDate.map((p) => (
+					<li class="flex flex-col gap-x-2 sm:flex-row">
+						<PostPreview post={p} />
+					</li>
+				))
+			}
+		</ul>
+	</section>
+	<section class="mt-16">
+		<h2 class="title mb-4 text-xl">Experiences</h2>
+		<ol class="list-inside list-decimal">
+			<li>
+				<strong>Software Developer (Full Stack) @913.ai</strong>: <br />
+				<ul class="list-inside list-disc">
+					<li>
+						Created MVP MLP Full Stack App (Backend And Frontend) which is using by 25000+ users.
+					</li>
+					<li>
+						Improved on UI/UX User flow, increased initial Page Load Performance.(Core Web Vitals)
+					</li>
+					<li>
+						Frontend: NextJS, Typescript, TailwindCSS, Javascript, React,Zustand SM, Playwright
+					</li>
+					<li>
+						Backend: Python, FastAPI, SQlite, PostgreSQL, Firebase Auth, RealtimeDB, Firestore,
+						Google Cloud, Azure, Docker
+					</li>
+					<li>Dev Environment: VS Code, macOS, Linux Debian, Git VSC</li>
+					<li>Testing: Playwright, Jest</li>
+					<li>Code Quality/VSC: ESLint, Prettier, Husky, Git</li>
+				</ul><br />
+				<div class="my-1 h-0 w-full border border-zinc-300"></div>
+				<br />
+			</li>
+			<li>
+				<strong>Professional Development | Career Break</strong>: <br />
+				<ul class="list-inside list-disc">
+					<li>Learning Deutsch</li>
+					<li>Developing Open Source Projects</li>
+				</ul>
+				<br />
+				<div class="my-1 h-0 w-full border border-zinc-300"></div>
+				<br />
+			</li>
+			<li>
+				<strong>Frontend Software Developer @Ollang Inc.</strong>: <br /> As a software developer, Mostly
+				I worked on the Web, and sometimes I contributed back-end side. The team I worked for was 5 people.
+				I have contributed/created 5 Application directly. We developed AI Dubbing localization tool
+				and subtitle tool. Netflix, W4TCH, and some Big Turkish TV channels were our customers who used
+				our tools. I developed a Subtitle creator tool. (I think this tool is better than YouTube’s subtitle
+				tool). I contributed AI Dubbing tool. This tool generates Text-to-speech and implements video.Also
+				We followed Clean Code Rules, and used some linter(ESLint,Prettier,Husky) for good code quality.
+				We followed agile scrum methodologies.I contributed/ created 5 applications directly.
+				<ul class="list-inside list-disc">
+					<li>Reviewed colleague’s codes/ pull requests (Git VSC).</li>
+					<li>had pair programming with my teammates.</li>
+					<li>Dev Environment: VS Code, macOS, Linux Debian, Git VSC,</li>
+					<li>Project Management: Atlassian Jira</li>
+					<li>
+						On Front-end side: I used Angular(10…15), TailwindCSS,SCSS, Typescript, ESLint,
+						WordPress, Angular Material, RxJS, ApexChart, Reactive Forms Module, HttpClient Module
+					</li>
+					<li>
+						on Back-end side: NestJS, Loopback, Node.js, Docker, MongoDB, Redis, RabbitMQ,
+						JavaScript, AWS S3,
+					</li>
+				</ul>
+				<br />
+				<div class="my-1 h-0 w-full border border-zinc-300"></div>
+				<br />
+			</li>
+			<li>
+				<strong>Frontend Software Developer Traineeship @Patika.dev</strong>: <br /> Created a Ecommerce
+				website and Admin Dashboard (Backend And Frontend). Client can add new products ,edit or delete
+				products and manages orders. Customers can order products and manager adresses and payment methods.
+				Technologies: Angular, GIT, HTML/CSS, Bootstrap, Nodejs, ExpressJs, Heroku, GITHUB Actions
+			</li>
+		</ol>
+	</section>
 </PageLayout>
-<section aria-label="Blog post list" class="mt-16">
-	<h2 class="title mb-4 text-xl">Posts</h2>
-	<ul class="space-y-4">
-		{
-			allPostsByDate.map((p) => (
-				<li class="flex flex-col gap-x-2 sm:flex-row">
-					<PostPreview post={p} />
-				</li>
-			))
-		}
-	</ul>
-</section>
-<section class="mt-16">
-	<h2 class="title mb-4 text-xl">Experiences</h2>
-	<ol class="list-inside list-decimal">
-		<li>
-			<strong>Professional Development | Career Break</strong>: <br />
-			<ul class="list-inside list-disc">
-				<li>Learning Deutsch</li>
-				<li>Developing Open Source Projects</li>
-			</ul>
-			● ● ● ● ● ●
-			<br />
-		</li>
-		<li>
-			<strong>Frontend Software Developer @Ollang Inc.</strong>: <br /> As a software developer, Mostly
-			I worked on the Web, and sometimes I contributed back-end side. The team I worked for was 5 people.
-			I have contributed/created 5 Application directly. We developed AI Dubbing localization tool and
-			subtitle tool. Netflix, W4TCH, and some Big Turkish TV channels were our customers who used our
-			tools. I developed a Subtitle creator tool. (I think this tool is better than YouTube’s subtitle
-			tool). I contributed AI Dubbing tool. This tool generates Text-to-speech and implements video.Also
-			We followed Clean Code Rules, and used some linter(ESLint,Prettier,Husky) for good code quality.
-			We followed agile scrum methodologies.I contributed/ created 5 applications directly.
-			<ul class="list-inside list-disc">
-				<li>Reviewed colleague’s codes/ pull requests (Git VSC).</li>
-				<li>had pair programming with my teammates.</li>
-				<li>Dev Environment: VS Code, macOS, Linux Debian, Git VSC,</li>
-				<li>Project Management: Atlassian Jira</li>
-				<li>
-					On Front-end side: I used Angular(10…15), TailwindCSS,SCSS, Typescript, ESLint, WordPress,
-					Angular Material, RxJS, ApexChart, Reactive Forms Module, HttpClient Module
-				</li>
-				<li>
-					on Back-end side: NestJS, Loopback, Node.js, Docker, MongoDB, Redis, RabbitMQ, JavaScript,
-					AWS S3,
-				</li>
-			</ul>
-			● ● ● ● ● ●
-			<br />
-		</li>
-		<li>
-			<strong>Frontend Software Developer Traineeship @Patika.dev</strong>: <br /> Created a Ecommerce
-			website and Admin Dashboard (Backend And Frontend). Client can add new products ,edit or delete
-			products and manages orders. Customers can order products and manager adresses and payment methods.
-			Technologies: Angular, GIT, HTML/CSS, Bootstrap, Nodejs, ExpressJs, Heroku, GITHUB Actions
-		</li>
-	</ol>
-</section>
 <!-- <section class="mt-16">
 		<h2 class="title mb-4 text-xl">Technologies</h2>
 		<dl class="space-y-4">
