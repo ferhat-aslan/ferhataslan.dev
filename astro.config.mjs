@@ -1,0 +1,74 @@
+import { defineConfig, passthroughImageService } from "astro/config";
+import fs from "fs";
+import mdx from "@astrojs/mdx";
+import tailwindcss from "@tailwindcss/vite";
+import sitemap from "@astrojs/sitemap";
+import sanity from "@sanity/astro";
+
+import rehypeExternalLinks from "rehype-external-links";
+import { remarkReadingTime } from "./src/utils/remark-reading-time";
+import icon from "astro-icon";
+import expressiveCode from "astro-expressive-code";
+import { expressiveCodeOptions } from "./src/site.config";
+
+// https://astro.build/config
+export default defineConfig({
+  // ! Please remember to replace the following site property with your own domain
+  site: "https://ferhataslan.dev/",
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: "_blank",
+          rel: ["nofollow, noopener, noreferrer"],
+        },
+      ],
+    ],
+    remarkRehype: {
+      footnoteLabelProperties: {
+        className: [""],
+      },
+    },
+  },
+  integrations: [
+    expressiveCode(expressiveCodeOptions),
+    icon(),
+    sitemap(),
+    mdx(),
+    sanity({
+      projectId: "2qjmc5jd",
+      dataset: "production",
+    }),
+  ],
+  image: {
+    domains: ["ferhataslan.dev"],
+    service: passthroughImageService(),
+  },
+  // https://docs.astro.build/en/guides/prefetch/
+  prefetch: true,
+  vite: {
+    plugins: [rawFonts([".ttf", ".woff"]), tailwindcss()],
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"],
+    },
+  },
+});
+
+function rawFonts(ext) {
+  return {
+    name: "vite-plugin-raw-fonts",
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore:next-line
+    transform(_, id) {
+      if (ext.some((e) => id.endsWith(e))) {
+        const buffer = fs.readFileSync(id);
+        return {
+          code: `export default ${JSON.stringify(buffer)}`,
+          map: null,
+        };
+      }
+    },
+  };
+}
