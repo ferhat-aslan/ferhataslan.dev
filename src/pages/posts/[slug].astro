@@ -1,23 +1,38 @@
 ---
-import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import type { GetStaticPaths } from "astro";
 
-import PostLayout from "@/layouts/BlogPost.astro";
-import { getAllPosts } from "@/utils";
+import PostLayout from "@/layouts/SanityPost.astro";
+import { urlForImage, urlForSeoImage } from "../../../sanity/lib/image";
+import { getAllPostSlugs, getPostBySlug } from "../../../sanity/lib/posts";
+import { portableTextToHtml, portableTextToPlainText } from "../../../sanity/lib/portable-text";
 
 export const getStaticPaths = (async () => {
-	const blogEntries = await getAllPosts();
-	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
+	const slugs = await getAllPostSlugs();
+	return slugs.map((slug) => ({ params: { slug } }));
 }) satisfies GetStaticPaths;
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const slug = Astro.params.slug;
+if (!slug) throw new Error("Missing slug param");
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const post = await getPostBySlug(slug);
+
+if (!post) {
+	throw new Error(`Post not found for slug: ${slug}`);
+}
+
+const publishedAt = post.publishedAt ? new Date(post.publishedAt) : undefined;
+const html = portableTextToHtml(post.body ?? []);
+const descriptionFromBody = portableTextToPlainText(post.body ?? []).slice(0, 160);
+const description = descriptionFromBody || post.title;
+const ogImage = post.mainImage ? urlForSeoImage(post.mainImage).url() : undefined;
+const mainImageUrl = post.mainImage ? urlForImage(post.mainImage).width(1600).fit("max").url() : undefined;
 ---
 
-<PostLayout post={entry}>
-	<Content />
+<PostLayout
+	meta={{ title: post.title, description, ogImage, articleDate: publishedAt?.toISOString() }}
+	publishedAt={publishedAt}
+	title={post.title}
+	mainImageUrl={mainImageUrl}
+>
+	<Fragment set:html={html} />
 </PostLayout>

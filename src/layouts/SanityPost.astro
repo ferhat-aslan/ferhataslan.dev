@@ -1,0 +1,46 @@
+---
+import type {SiteMeta} from "@/types";
+
+import BaseLayout from "@/layouts/Base.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+interface Props {
+  meta: SiteMeta;
+  title: string;
+  publishedAt: Date | undefined;
+  mainImageUrl: string | undefined;
+}
+
+const {meta, title, publishedAt, mainImageUrl} = Astro.props;
+
+const dateTimeOptions: Intl.DateTimeFormatOptions = {
+  month: "long",
+};
+---
+
+<BaseLayout meta={meta}>
+  <article class="break-words" data-pagefind-body>
+    {mainImageUrl && (
+      <div class="aspect-h-9 aspect-w-16 mb-6">
+        <img
+          alt=""
+          class="h-full w-full object-cover"
+          fetchpriority="high"
+          loading="eager"
+          src={mainImageUrl}
+        />
+      </div>
+    )}
+    <h1 class="title mb-3 sm:mb-1">{title}</h1>
+    {publishedAt && (
+      <p class="font-semibold">
+        <FormattedDate date={publishedAt} dateTimeOptions={dateTimeOptions} />
+      </p>
+    )}
+    <div
+      class="prose prose-sm prose-x mt-12 prose-headings:font-semibold prose-headings:text-accent-2 prose-headings:before:absolute prose-headings:before:-ms-4 prose-headings:before:text-accent prose-th:before:content-none"
+    >
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

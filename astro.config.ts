@@ -1,9 +1,10 @@
 import { defineConfig, passthroughImageService } from "astro/config";
 import fs from "fs";
 import mdx from "@astrojs/mdx";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from '@tailwindcss/vite'
 import sitemap from "@astrojs/sitemap";
-import remarkUnwrapImages from "remark-unwrap-images";
+import sanity from "@sanity/astro";
+
 import rehypeExternalLinks from "rehype-external-links";
 import { remarkReadingTime } from "./src/utils/remark-reading-time";
 import icon from "astro-icon";
@@ -15,7 +16,7 @@ export default defineConfig({
 	// ! Please remember to replace the following site property with your own domain
 	site: "https://ferhataslan.dev/",
 	markdown: {
-		remarkPlugins: [remarkUnwrapImages, remarkReadingTime],
+		remarkPlugins: [ remarkReadingTime],
 		rehypePlugins: [
 			[
 				rehypeExternalLinks,
@@ -34,11 +35,12 @@ export default defineConfig({
 	integrations: [
 		expressiveCode(expressiveCodeOptions),
 		icon(),
-		tailwind({
-			applyBaseStyles: false,
-		}),
 		sitemap(),
 		mdx(),
+		sanity({
+			 projectId: '2qjmc5jd',
+    dataset: 'production'
+		})
 	],
 	image: {
 		domains: ["ferhataslan.dev"],
@@ -47,7 +49,7 @@ export default defineConfig({
 	// https://docs.astro.build/en/guides/prefetch/
 	prefetch: true,
 	vite: {
-		plugins: [rawFonts([".ttf", ".woff"])],
+		plugins: [rawFonts([".ttf", ".woff"]), tailwindcss()],
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
 		},

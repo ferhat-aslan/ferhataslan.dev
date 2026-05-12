@@ -1,15 +1,14 @@
 ---
 // @ts-nocheck
 import SocialList from "@/components/SocialList.astro";
-import PostPreview from "@/components/blog/PostPreview.astro";
+import PostPreview from "@/components/blog/SanityPostPreview.astro";
 import PageLayout from "@/layouts/Base.astro";
-import {getAllPosts, sortMDByDate} from "@/utils";
 import {Image} from "astro:assets";
 import GermanyIcon from "@/assets/made-in-germany-icon.png";
+import {getAllPostsForListing} from "../../sanity/lib/posts";
 
 const MAX_POSTS = 10;
-const allPosts = await getAllPosts();
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+const allPostsByDate = (await getAllPostsForListing()).slice(0, MAX_POSTS);
 ---
 
 <PageLayout meta={{title: "Home"}}>

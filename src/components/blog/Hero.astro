@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 
 import { Image } from "astro:assets";
 
@@ -9,11 +10,9 @@ interface Props {
 	content: CollectionEntry<"post">;
 }
 
-const {
-	content: { data, render },
-} = Astro.props;
-
-const { remarkPluginFrontmatter } = await render();
+const { content } = Astro.props;
+const { data } = content;
+const { remarkPluginFrontmatter } = await render(content);
 
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
 	month: "long",
@@ -73,14 +72,9 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 			</svg>
 			{data.tags.map((tag, i) => (
 				<>
-					<a
-						aria-label={`View more blogs with the tag ${tag}`}
-						class="x-link inline-block before:content-['#']"
-						data-pagefind-filter="tag"
-						href={`/tags/${tag}/`}
-					>
+					<span class="inline-block before:content-['#']" data-pagefind-filter="tag">
 						{tag}
-					</a>
+					</span>
 					{i < data.tags.length - 1 && ", "}
 				</>
 			))}

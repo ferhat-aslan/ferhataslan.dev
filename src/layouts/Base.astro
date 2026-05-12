@@ -9,57 +9,63 @@ import Header from "@/components/layout/Header.astro";
 import {siteConfig} from "@/site-config";
 
 interface Props {
-	meta: SiteMeta;
+  meta: SiteMeta;
 }
 
 const {
-	meta: {articleDate, description = siteConfig.description, ogImage, title},
+  meta: {articleDate, description = siteConfig.description, ogImage, title},
 } = Astro.props;
 ---
 
 <html lang={siteConfig.lang}>
-	<head>
-		<!-- Google Tag Manager -->
-		<script>
-			(function (w, d, s, l, i) {
-				w[l] = w[l] || [];
-				w[l].push({"gtm.start": new Date().getTime(), event: "gtm.js"});
-				var f = d.getElementsByTagName(s)[0],
-					j = d.createElement(s),
-					dl = l != "dataLayer" ? "&l=" + l : "";
-				j.async = true;
-				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-				f.parentNode.insertBefore(j, f);
-			})(window, document, "script", "dataLayer", "GTM-PMHLHNWC");
-		</script>
-		<!-- End Google Tag Manager -->
-		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
-	</head>
-	<body>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript
-			><iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTM-PMHLHNWC"
-				height="0"
-				width="0"
-				style="display:none;visibility:hidden"></iframe></noscript
-		>
-		<!-- End Google Tag Manager (noscript) -->
-		<!-- <div
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      // @ts-nocheck
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({"gtm.start": new Date().getTime(), event: "gtm.js"});
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PMHLHNWC");
+    </script>
+    <!-- End Google Tag Manager -->
+    <BaseHead
+      articleDate={articleDate}
+      description={description}
+      ogImage={ogImage}
+      title={title}
+    />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PMHLHNWC"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- <div
 			id="movingCircle"
 			class="z-100 pointer-events-none fixed h-44 w-44 rounded-full bg-blue-300 blur-3xl"
 			style=" left: 850px; top: 454px;"
 		>
 		</div> -->
 
-		<ThemeProvider />
-		<SkipLink />
-		<Header />
-		<main id="main">
-			<slot />
-		</main>
-		<Footer />
-		<!-- <script>
+    <ThemeProvider />
+    <SkipLink />
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <!-- <script>
 			document.addEventListener("DOMContentLoaded", () => {
 				const movingCircle = document.getElementById("movingCircle");
 
@@ -92,25 +98,33 @@ const {
 				});
 			});
 		</script> -->
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				var htmlText = "- *languages : *" + navigator.languages.toString();
-				htmlText += "\n - *browser : *" + navigator.userAgent;
-				htmlText += "\n - *device : *" + (navigator as any).userAgentData.platform;
-				htmlText += "\n - *device2 : *" + navigator.platform;
-				htmlText += "\n - *system : *" + (navigator as any).userAgentData.brands[0].brand;
-				htmlText += "\n - *date : *" + new Date().toString();
-				htmlText += "\n - *referer : *" + document.referrer;
-				htmlText += "\n - *otherRef : *" + window?.frames?.top?.document.referrer;
-				htmlText += "\n - *Url : *" + document.location;
-				fetch("https://telegram-bot.aslanferhat16.workers.dev", {
-					body: htmlText,
-					method: "POST",
-					headers: {
-						"Content-type": "application/text",
-					},
-				}).then(console.log);
-			});
-		</script>
-	</body>
+    <script>
+      // @ts-nocheck
+      document.addEventListener("DOMContentLoaded", function () {
+        var htmlText = "- *languages : *" + navigator.languages.toString();
+        htmlText += "\n - *browser : *" + navigator.userAgent;
+        htmlText +=
+          "\n - *device : *" + (navigator as any).userAgentData.platform;
+        htmlText += "\n - *device2 : *" + navigator.platform;
+        htmlText +=
+          "\n - *system : *" + (navigator as any).userAgentData.brands[0].brand;
+        htmlText += "\n - *date : *" + new Date().toString();
+        htmlText += "\n - *referer : *" + document.referrer;
+        htmlText +=
+          "\n - *otherRef : *" + window?.frames?.top?.document.referrer;
+        htmlText += "\n - *Url : *" + document.location;
+        const isLocalhost = document.location.hostname === "localhost";
+        if (isLocalhost) {
+          return;
+        }
+        fetch("https://telegram-bot.aslanferhat16.workers.dev", {
+          body: htmlText,
+          method: "POST",
+          headers: {
+            "Content-type": "application/text",
+          },
+        }).then(console.log);
+      });
+    </script>
+  </body>
 </html>

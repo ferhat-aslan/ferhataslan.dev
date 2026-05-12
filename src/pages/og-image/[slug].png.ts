@@ -1,9 +1,10 @@
-import type { APIContext, InferGetStaticPropsType } from "astro";
+import type { APIContext } from "astro";
 import satori, { type SatoriOptions } from "satori";
 import { html } from "satori-html";
 import { Resvg } from "@resvg/resvg-js";
 import { siteConfig } from "@/site-config";
-import { getAllPosts, getFormattedDate } from "@/utils";
+import { getFormattedDate } from "@/utils/date";
+import { getAllPostsForListing, getPostBySlug } from "../../../sanity/lib/posts";
 
 import FredokaReg from "@/assets/font/Fredoka-Regular.ttf";
 import FredokaBold from "@/assets/font/Fredoka-Bold.ttf";
@@ -57,18 +58,27 @@ const markup = (title: string, pubDate: string) =>
 		</div>
 	</div>`;
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-
 export async function GET(context: APIContext) {
-	const { title, pubDate } = context.props as Props;
+	const slug = context.params.slug;
+	if (!slug) {
+		return new Response("Missing slug", { status: 400 });
+	}
+
+	const post = await getPostBySlug(slug);
+	if (!post) {
+		return new Response("Not found", { status: 404 });
+	}
+
+	const title = post.title;
+	const pubDate = post.publishedAt ? new Date(post.publishedAt) : new Date();
 
 	const postDate = getFormattedDate(pubDate, {
 		weekday: "long",
 		month: "long",
 	});
-	const svg = await satori(markup(title, postDate), ogOptions);
+	const svg = await satori(markup(title, postDate) as any, ogOptions);
 	const png = new Resvg(svg).render().asPng();
-	return new Response(png, {
+	return new Response(png as any, {
 		headers: {
 			"Content-Type": "image/png",
 			"Cache-Control": "public, max-age=31536000, immutable",
@@ -77,14 +87,8 @@ export async function GET(context: APIContext) {
 }
 
 export async function getStaticPaths() {
-	const posts = await getAllPosts();
-	return posts
-		.filter(({ data }) => !data.ogImage)
-		.map((post) => ({
-			params: { slug: post.slug },
-			props: {
-				title: post.data.title,
-				pubDate: post.data.updatedDate ?? post.data.publishDate,
-			},
-		}));
+	const posts = await getAllPostsForListing();
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+	}));
 }

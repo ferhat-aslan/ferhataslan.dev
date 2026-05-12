@@ -1,105 +1,225 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss" important;
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/aspect-ratio";
 
 @font-face {
-	font-family: "Fredoka";
-	src: url("/src/assets/font/Fredoka-Light.ttf") format("truetype");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Fredoka";
-	src: url("/src/assets/font/Fredoka-Regular.ttf") format("truetype");
-	font-weight: 500;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Fredoka";
-	src: url("/src/assets/font/Fredoka-Regular.ttf") format("truetype");
-	font-weight: 600;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Fredoka";
-	src: url("/src/assets/font/Fredoka-SemiBold.ttf") format("truetype");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
+  font-family: "Fredoka";
+  src: url("/src/assets/font/Fredoka-Light.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: "Fredoka";
-	src: url("/src/assets/font/Fredoka-Bold.ttf") format("truetype");
-	font-weight: bold;
-	font-style: normal;
-	font-display: swap;
+  font-family: "Fredoka";
+  src: url("/src/assets/font/Fredoka-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fredoka";
+  src: url("/src/assets/font/Fredoka-Regular.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fredoka";
+  src: url("/src/assets/font/Fredoka-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fredoka";
+  src: url("/src/assets/font/Fredoka-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 * {
-	font-family: Fredoka;
-	font-size: 18px;
-	line-height: 27px;
+  font-family: Fredoka;
+  font-size: 18px;
+  line-height: 27px;
 }
+
+@theme {
+  --color-mint-500: oklch(0.72 0.11 178);
+  --color-bgColor: hsl(var(--theme-bg));
+  --color-textColor: hsl(var(--theme-text));
+  --color-link: hsl(var(--theme-link));
+  --color-accent: hsl(var(--theme-accent));
+  --color-accent-2: hsl(var(--theme-accent-2));
+  --color-quote: hsl(var(--theme-quote));
+}
+
 @layer base {
-	:root,
-	:root[data-theme="light"] {
-		color-scheme: light;
-		/* https://tailwindcss.com/docs/customizing-colors#using-css-variables */
-		--theme-bg: 0deg 0% 98%;
-		--theme-link: 172deg 18% 41%;
-		--theme-text: 203deg 11% 15%;
-		--theme-accent: 351deg 66% 48%;
-		--theme-accent-2: 0deg 0% 7%;
-		--theme-quote: 177deg 36% 58%;
-	}
+  :root,
+  :root[data-theme="light"] {
+    color-scheme: light;
+    /* https://tailwindcss.com/docs/customizing-colors#using-css-variables */
+    --theme-bg: 0deg 0% 98%;
+    --theme-link: 172deg 18% 41%;
+    --theme-text: 203deg 11% 15%;
+    --theme-accent: 351deg 66% 48%;
+    --theme-accent-2: 0deg 0% 7%;
+    --theme-quote: 177deg 36% 58%;
+  }
 
-	:root[data-theme="dark"] {
-		color-scheme: dark;
-		--theme-bg: 210deg 6% 12%;
-		--theme-link: 330deg 49% 67%;
-		--theme-text: 220deg 3% 79%;
-		--theme-accent: 159deg 64% 45%;
-		--theme-accent-2: 0deg 0% 93%;
-		--theme-quote: 102deg 100% 86%;
-	}
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --theme-bg: 210deg 6% 12%;
+    --theme-link: 330deg 49% 67%;
+    --theme-text: 220deg 3% 79%;
+    --theme-accent: 159deg 64% 45%;
+    --theme-accent-2: 0deg 0% 93%;
+    --theme-quote: 102deg 100% 86%;
+  }
 
-	html {
-		@apply scroll-smooth;
-	}
+  html {
+    @apply scroll-smooth;
+  }
 
-	body {
-		@apply mx-auto flex min-h-screen max-w-3xl flex-col bg-bgColor px-8 pt-16 font-mono text-sm font-normal text-textColor antialiased;
-	}
+  body {
+    @apply mx-auto bg-bgColor text-textColor flex min-h-screen max-w-3xl flex-col  px-8 pt-16 font-mono text-sm font-normal  antialiased;
+  }
 }
 html {
-	scrollbar-gutter: stable;
+  scrollbar-gutter: stable;
 }
 
 strong {
-	font-weight: 600 !important;
-	/* color: blueviolet !important; */
+  font-weight: 600 !important;
+  /* color: blueviolet !important; */
 }
 
 body::before {
-	left: 0px;
-	--size: 40px;
-	--line: color-mix(in lch, canvasText 25%, hsl(0 0% 100% / 0.5));
-	content: "";
-	height: 100vh;
-	width: 100vw;
-	position: fixed;
-	background:
-		linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size)
-			var(--size),
-		linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
-	mask: linear-gradient(-25deg, transparent 65%, white);
-	top: 0;
-	transform-style: flat;
-	pointer-events: none;
-	z-index: -1;
+  left: 0px;
+  --size: 40px;
+  --line: color-mix(in lch, canvasText 25%, hsl(0 0% 100% / 0.5));
+  content: "";
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background:
+    linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50%
+      50% / var(--size) var(--size),
+    linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+      var(--size) var(--size);
+  mask: linear-gradient(-25deg, transparent 65%, white);
+  top: 0;
+  transform-style: flat;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@utility title {
+  @apply text-2xl font-semibold text-accent-2;
+}
+
+@utility x-link {
+  cursor: url(/src/assets/arrow-up-right-png.png), auto !important;
+  @apply bg-[size:100%_6px] bg-bottom bg-repeat-x;
+  background-image: linear-gradient(
+    transparent,
+    transparent 5px,
+    hsl(var(--theme-text)) 5px,
+    hsl(var(--theme-text))
+  );
+}
+
+.x-link:hover {
+  background-image: linear-gradient(
+    transparent,
+    transparent 4px,
+    hsl(var(--theme-link)) 4px,
+    hsl(var(--theme-link))
+  );
+}
+
+@layer base {
+  .prose {
+    --tw-prose-body: hsl(var(--theme-text) / 1);
+    --tw-prose-headings: hsl(var(--theme-accent-2) / 1);
+    --tw-prose-links: hsl(var(--theme-text) / 1);
+    --tw-prose-bold: hsl(var(--theme-text) / 1);
+    --tw-prose-bullets: hsl(var(--theme-text) / 1);
+    --tw-prose-quotes: hsl(var(--theme-quote) / 1);
+    --tw-prose-code: hsl(var(--theme-text) / 1);
+    --tw-prose-hr: 0.5px dashed #666;
+    --tw-prose-th-borders: #666;
+  }
+
+  .prose a {
+    @apply x-link no-underline;
+  }
+
+  .prose strong {
+    font-weight: 600;
+    color: blueviolet;
+  }
+
+  .prose code {
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    padding: 4px 9px;
+  }
+
+  .prose code::before,
+  .prose code::after {
+    content: none !important;
+  }
+
+  .prose blockquote {
+    border-left-width: 0;
+  }
+
+  .prose hr {
+    border-top-style: dashed;
+  }
+
+  .prose thead {
+    border-bottom-width: 0;
+  }
+
+  .prose thead th {
+    font-weight: 700;
+    border-bottom: 1px dashed #666;
+  }
+
+  .prose tbody tr {
+    border-bottom-width: 0;
+  }
+
+  .prose tfoot {
+    border-top: 1px dashed #666;
+  }
+
+  .prose sup {
+    @apply ms-0.5;
+  }
+
+  .prose sup a {
+    @apply bg-none;
+  }
+
+  .prose sup a:hover {
+    @apply text-link no-underline bg-none;
+  }
+
+  .prose sup a::before {
+    content: "[";
+  }
+
+  .prose sup a::after {
+    content: "]";
+  }
+
+  .prose-sm code {
+    @apply text-sm font-normal;
+  }
 }
