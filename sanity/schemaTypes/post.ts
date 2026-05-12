@@ -19,7 +19,11 @@ export default defineType({
         maxLength: 96,
       },
     }),
-
+ defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    }),
     defineField({
       name: 'mainImage',
       title: 'Main image',

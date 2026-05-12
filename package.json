@@ -16,6 +16,8 @@
 		"@astrojs/rss": "4.0.18",
 		"@astrojs/sitemap": "3.7.2",
 		"@sanity/astro": "^3.4.0",
+		"@sanity/code-input": "^7.1.0",
+		"@sanity/table": "^2.0.1",
 		"@tailwindcss/vite": "^4.3.0",
 		"astro": "6.3.1",
 		"astro-expressive-code": "^0.42.0",

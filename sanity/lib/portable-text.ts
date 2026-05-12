@@ -27,6 +27,26 @@ export function portableTextToHtml(value: unknown) {
           const alt = value?.alt ?? "";
           return `<img src="${src}" alt="${alt}" loading="lazy" />`;
         },
+        codeField: ({value}) => {
+          const code = value?.code ?? "";
+          const language = value?.language ?? "text";
+          return `<pre><code class="language-${language}">${code}</code></pre>`;
+        },
+        tableField: ({value}) => {
+          const rows = value?.rows ?? [];
+          const headerRow = rows[0] || [];
+          const bodyRows = rows.slice(1);
+          const thead = `<thead><tr>${headerRow
+            .map((cell: string) => `<th>${cell}</th>`)
+            .join("")}</tr></thead>`;
+          const tbody = `<tbody>${bodyRows
+            .map(
+              (row: string[]) =>
+                `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`
+            )
+            .join("")}</tbody>`;
+          return `<table>${thead}${tbody}</table>`;
+        },
       },
     },
   });
